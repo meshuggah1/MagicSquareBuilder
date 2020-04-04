@@ -1,0 +1,23 @@
+package com.KonstKudryavtsev;
+
+public class InputChecker {
+
+    public static int parseAndCheck(String[] args) {
+
+        if (args.length != 1) {
+            System.out.println("Please, run the program with only 1 number as an argument!");
+            throw new IllegalArgumentException();
+        }
+
+        int parsedInt;   // пока что int, т.к. делаем методом перебора и неизвестно, как долго будет считать большие числа
+        try {
+            parsedInt = Integer.parseInt(args[0]);
+            if (parsedInt <= 0)
+                throw new IllegalArgumentException();
+        } catch (IllegalArgumentException e) {
+            System.out.println("Please, run the program with correct argument! (Only natural number excepted, No zeroes");
+            throw new IllegalArgumentException();
+        }
+        return parsedInt;
+    }
+}
