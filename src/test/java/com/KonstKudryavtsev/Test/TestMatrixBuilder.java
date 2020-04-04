@@ -14,7 +14,7 @@ public class TestMatrixBuilder {
     @Test
     public void testBuild() {
 
-        int n = 14;
+        int n = 16;
         int [][]matrix = MagicSquareBuilder.build(n);
         assert matrix != null;
 

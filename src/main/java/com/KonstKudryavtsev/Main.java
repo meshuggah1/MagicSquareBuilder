@@ -6,14 +6,12 @@ package com.KonstKudryavtsev;
 что сумма чисел в каждой строке, каждом столбце и на обеих диагоналях одинакова.
 */
 
-
 public class Main {
     public static void main(String[] args) {
 
         int n = InputChecker.parseAndCheck(args);
-        int [][]matrix;
 
-        matrix = MagicSquareBuilder.build(n);
+        int [][]matrix = MagicSquareBuilder.build(n);
 
         assert matrix != null;
 
