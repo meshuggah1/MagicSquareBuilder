@@ -13,12 +13,11 @@ public class TestMatrixBuilder {
 
     //Тестовый метод работает для входного числа < 216 (из-за переполнения magicNum и check)
     @ParameterizedTest
-    @ValueSource(ints = { 3, 4, 7, 12, 20, 67, 216})
+    @ValueSource(ints = { 3, 4, 7, 12, 20, 67, 215, 10, 14, 18, 6})
     public void testBuild(int n) {
 
         int [][]matrix = MagicSquareBuilder.build(n);
-        assert matrix != null;
-
+        Assert.assertNotNull(matrix);
 
         //check if all numbers are different
         HashMap<Integer, Integer> usedNums = new HashMap<>();
