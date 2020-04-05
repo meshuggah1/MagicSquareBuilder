@@ -2,7 +2,8 @@ package com.KonstKudryavtsev.Test;
 
 import com.KonstKudryavtsev.MagicSquareBuilder;
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashMap;
 import java.util.Random;
@@ -10,11 +11,11 @@ import java.util.Random;
 
 public class TestMatrixBuilder {
 
-    //Тестовый метод работает для входного числа < 217 (из-за переполнения magicNum и check)
-    @Test
-    public void testBuild() {
+    //Тестовый метод работает для входного числа < 216 (из-за переполнения magicNum и check)
+    @ParameterizedTest
+    @ValueSource(ints = { 3, 4, 7, 12, 20, 67, 216})
+    public void testBuild(int n) {
 
-        int n = 16;
         int [][]matrix = MagicSquareBuilder.build(n);
         assert matrix != null;
 
