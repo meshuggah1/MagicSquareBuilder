@@ -1,6 +1,5 @@
 package com.KonstKudryavtsev;
 
-import java.io.IOException;
 
 public class MagicSquareBuilder {
 
@@ -15,17 +14,17 @@ public class MagicSquareBuilder {
     }
 
     /*
-     ** Широко применяемый алгоритм для квадратов с нечетным n.
-     ** 1) Начинаем с середины верхнего ряда. Ставим 1.
-     ** 2) Сначала проверяем ячейку наверх по диагонали от только что заполненной.
-     ** 3) Если вышли за пределы нумерации столбцов, заполняем ячейку с той же x и y-n.
-     **      Напр. для кв. 3х3 (коорд. начинаются с 0):
-     ** из яч {2, 2} попали по диагонали в несуществующую яч. {1, 3}. х не меняем, y - 3 = 0.
-     ** Соответственно, попадаем в яч. с коорд. {1, 0}
-     ** Если вышли за пределы нумерации строк, заполняем ячейку с той же y и x+n.
-     ** 4) Если вышли за пределы одновременно и строк и столбцов (за правый верхний угол), то
-     **      применяется правило занятой ячейки.
-     ** 5) Если попали на занятую ячейку, то возвращаемся на предыдущую и от нее и на одну вниз.
+     ** Widely used algorithm for squares with odd size (n).
+     ** 1) We start from the middle of the top row. Place 1.
+     ** 2) First we check the cell which is up and left from the one we just filled.
+     ** 3) If we ended up being out of the matrix borders, we fill the cell with same 'x' and 'y-n'.
+     **      I.E. for a square 3х3 (coordinates start from 0):
+     ** from a cell {2, 2} we get into a non-existent cell {1, 3}. 'х' stays the same, and 'y - 3' = 0.
+     ** So, we get to the cell {1, 0}
+     ** If we end up being out of the matrix borders, we fill the cell with same 'y' and 'x+n'.
+     ** 4) If current coordinates are out of existing rows and columns (further than far right angle),
+     **      then we use the "filled cell" rule:
+     ** 5) If we get to an already filled cell, we get back to the previous one and from there one cell down.
      */
 
     private static int[][] buildOdd(int n) {
@@ -57,13 +56,13 @@ public class MagicSquareBuilder {
     }
 
     /*
-     ** Алгоритм для n, кратных 4.
-     ** 1) Выделяются области квадрата: углы размером n/4 * n/4 и центр размером n/2 на n/2.
-     ** 2) Идем по ячейкам квадрата (направо-вниз), начиная с верхней левой и заполняем (начиная с 1)
-     **      цифрами только выделенные в п.1 области,
-     **      счет при этом не прекращая даже во время прохода незаполняемых ячеек.
-     ** 3) Теперь идем по квадрату (налево-вверх), начиная счет снова с 1 и с нижнего правого угла.
-     **      Заполняем по тому же принципу, только теперь игнорируя ранее заполненные ячейки.
+     ** An algorithm for n, divisible by 4.
+     ** 1) We divide our square into smaller square areas: squares n/4 * n/4 near angle and a center square n/2 на n/2.
+     ** 2) We move from cell to cell (right-and-down), starting from the top-left and fill (starting with 1)
+     **      with digits only the areas, described in p.1,
+     **      but we don't stop the count, when we move through the cell, which we don't fill.
+     ** 3) Now we move through the main square (left-and-up), staring again from 1 and from bottom-left corner.
+     **      We fill the cells using the same principles, but now ignoring already filled cells.
      */
 
     private static int[][] buildDoublyEven(int n) {

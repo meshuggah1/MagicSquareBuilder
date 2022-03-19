@@ -1,9 +1,9 @@
 package com.KonstKudryavtsev;
 
 /*
-Решение магического квадрата. На вход получаем параметр N. На выходе – заполненная матрица.class
-Маги́ческий, или волше́бный квадра́т — квадратная таблица n x n, заполненная n^2 различными числами таким образом,
-что сумма чисел в каждой строке, каждом столбце и на обеих диагоналях одинакова.
+Solving the Magic Square. We have an input parameter N. The outcome is a filled matrix.
+Magic square — is a matrix n x n, filled with n^2 of different numbers such that,
+sum of those numbers in each row, column and both main diagonals is the same.
 */
 
 public class Main {

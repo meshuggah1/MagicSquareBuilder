@@ -1,11 +1,13 @@
 package com.KonstKudryavtsev.Test;
 
 import com.KonstKudryavtsev.InputChecker;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestInputChecker {
     @Test
@@ -18,9 +20,9 @@ public class TestInputChecker {
         String []testStr = {"", "qwe"};
         try {
             InputChecker.parseAndCheck(testStr);
-        }catch (IllegalArgumentException ignored){}
+        } catch (IllegalArgumentException ignored){}
 
-        Assert.assertTrue(outputStream.toString().contains("Please, run the program with only 1 number as an argument!"));
+        assertTrue(outputStream.toString().contains("Please, run the program with only 1 number as an argument!"));
 
         outputStream.reset();
 
@@ -29,10 +31,10 @@ public class TestInputChecker {
         for (String []s: testArrOfStrArrays) {
             try {
                 InputChecker.parseAndCheck(s);
-            }catch (IllegalArgumentException ignored){}
+            } catch (IllegalArgumentException ignored){}
 
-            Assert.assertFalse(outputStream.toString().contains("Please, run the program with only 1 number as an argument!"));
-            Assert.assertTrue(outputStream.toString().contains("Please, run the program with correct argument! (Only natural number excepted, No zeroes"));
+            assertFalse(outputStream.toString().contains("Please, run the program with only 1 number as an argument!"));
+            assertTrue(outputStream.toString().contains("Please, run the program with correct argument! (Only natural number excepted, No zeroes"));
 
             outputStream.reset();
         }
@@ -40,9 +42,9 @@ public class TestInputChecker {
         testStr = new String[]{"7"};
         try {
             InputChecker.parseAndCheck(testStr);
-        }catch (IllegalArgumentException ignored){}
+        } catch (IllegalArgumentException ignored){}
 
-        Assert.assertFalse(outputStream.toString().contains("Please, run the program with only 1 number as an argument!"));
-        Assert.assertFalse(outputStream.toString().contains("Please, run the program with correct argument! (Only natural number excepted, No zeroes"));
+        assertFalse(outputStream.toString().contains("Please, run the program with only 1 number as an argument!"));
+        assertFalse(outputStream.toString().contains("Please, run the program with correct argument! (Only natural number excepted, No zeroes"));
     }
 }

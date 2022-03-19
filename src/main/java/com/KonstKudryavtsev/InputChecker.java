@@ -9,7 +9,7 @@ public class InputChecker {
             throw new IllegalArgumentException();
         }
 
-        int parsedInt;   // int, т.к. долго будет считать большие числа
+        int parsedInt;   // int, because bigger numbers would be computed for a very long time
         try {
             parsedInt = Integer.parseInt(args[0]);
             if (parsedInt <= 0)
